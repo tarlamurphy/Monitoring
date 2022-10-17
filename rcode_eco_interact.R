@@ -28,7 +28,46 @@ plot(meuse$cadmium, meuse$zinc) #to plot the x and y, need to isolate them withi
 attach(meuse) #used often in datasets, easier than making objects or using $ function
 #can also detach the dataset
 
-
 #make a scatterplot matrix out of all the variables - 14x13 variables.
-pairs(meuse) #a scatterplot matrix of all the interactions of each variables
+pairs(meuse) #a scatterplot matrix of all the interactions of each variables#
+
+#Spatial R
+#install the relevant package and find it in the library
+
+install.packages("sp")
+library(sp)
+
+#get the dataset for meuse
+data(meuse)
+#look at the components of the dataset
+head(meuse)
+
+#
+coordinates(meuse) = ~x+y
+
+plot(meuse)
+
+# spplot is used to plot elements like zinc, lead etc. spread in space
+spplot(meuse, "zinc", main="Concentration of zinc")
+
+meuse[,3:6] #this subsets the columns between 3 and 6
+#this shows all the data, no matter what
+pol <- meuse[,3:6] #the meuse object subset is assigned to the word pol
+
+head(pol) #only shows the first 6 lines of pol
+
+pairs(pol, col = "blue") #instead of showing all the pairs, just the ones contained in pol [pollution]
+
+pairs(~cadmium + copper + lead + zinc,data=meuse) #the tilde (~) joins these non-numeric variables together
+
+coordinates(meuse) = ~x+y # takes the x +y points of meuse, which is now a spatial dataset
+
+#subsets: takes out the elements of choice
+# spplot is used to plot elements like zinc, lead etc. spread in space
+spplot(meuse, "zinc", main="Concentration of zinc") #main is the title of the plot
+
+spplot(meuse, c("copper","zinc")) #this is an array, plotting several variables together. c is important when there are a number of variables
+
+bubble(meuse, "zinc") #rather than using colours you can use bubbles that are sized by value
+
 
