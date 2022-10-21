@@ -40,3 +40,22 @@ ggplot(d, aes(x = virus, y = death)) +
   geom_polygon(col = "orange")
 
      
+###############
+
+install.packages("spatstat") #install if necessary and load the required packages (
+library(spatstat)
+library(ggplot2)
+
+#import data
+#first create a folder in your computer
+#put the data we will use in this folder - Lab
+
+#set the working directory so r knows where to find the data
+setwd()
+#shortcut => session -> Set Working Directory -> Choose Directory -> ("~/Lab")
+
+covid <- read.table("covid_agg.csv", header=TRUE, sep = ",") #to read the data table, name it and tell r that it does have headings
+#sep = "," means that the data is displayed as comma-separated values
+#assign the table to the object covid
+
+
