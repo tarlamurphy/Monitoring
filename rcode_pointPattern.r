@@ -60,14 +60,21 @@ plot(multivar) #plot to view of correlations of the variables - interpret visual
 #same quadrant, closer = increased correlation
 
 # biomes names in the graph:
-attach(biomes_types)
-ordiellipse(multivar, type, col=c("black","red","green","blue"), kind = "ehull", lwd=3)  #ordiellipse function 
-ordispider(multivar, type, col=c("black","red","green","blue"), label = T)   #ordispider function 
+attach(biomes_types) #use the variables under the column types
 
-pdf("multivar.pdf")
+ordiellipse(multivar, type, col = c("black","red","green","blue"), kind = "ehull", lwd = 3)  #ordiellipse function - data is multivar, variable is type
+#kind means where on the plot?? Ellipse represents the points that are in the same biomes
+ordispider(multivar, type, col = c("black","red","green","blue"), label = T)   #ordispider function labels the points in a spider web
+
+pdf("multivar.pdf") #exports the plot as a pdf
 plot(multivar)
-ordiellipse(multivar, type, col=c("black","red","green","blue"), kind = "ehull", lwd=3)
-ordispider(multivar, type, col=c("black","red","green","blue"), label = T)
+ordiellipse(multivar, type, col = c("black","red","green","blue"), kind = "ehull", lwd = 3)
+ordispider(multivar, type, col = c("black","red","green","blue"), label = T) #all of these get put in the pdf together
+dev.off() #closes the pdf #can be used anywhere to close things off
+
+#exercise
+pdf("onlymultivar.pdf")
+plot(multivar)
 dev.off()
 
 
