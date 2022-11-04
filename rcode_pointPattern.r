@@ -37,3 +37,37 @@ cl <- colorRampPalette(c('cyan','yellow','orange','red','red4'))(100) #makes an 
 
 plot(density_map, col = cl)
 points(covid_planar, pch = 19, col = "purple")
+
+
+#############################################
+
+install.packages("vegan")
+
+library(vegan)
+
+load("biomes_multivar.RData")  # loads the required dataset
+ls()   #what does ls() mean? - a list of what is in the dataset - bc this was a complete r project containing these tables
+
+# plot per species matrix
+head(biomes)
+
+multivar <- decorana(biomes) #detrended correspondence analysis - similar to pca
+#reduce dimensionality by using data that explains most of the information 
+#simplifies by creating new datasets with new dimensions of data in a matrix
+multivar # the DCA1 and DCA2 together explain 80% of the data
+
+plot(multivar) #plot to view of correlations of the variables - interpret visually
+#same quadrant, closer = increased correlation
+
+# biomes names in the graph:
+attach(biomes_types)
+ordiellipse(multivar, type, col=c("black","red","green","blue"), kind = "ehull", lwd=3)  #ordiellipse function 
+ordispider(multivar, type, col=c("black","red","green","blue"), label = T)   #ordispider function 
+
+pdf("multivar.pdf")
+plot(multivar)
+ordiellipse(multivar, type, col=c("black","red","green","blue"), kind = "ehull", lwd=3)
+ordispider(multivar, type, col=c("black","red","green","blue"), label = T)
+dev.off()
+
+
