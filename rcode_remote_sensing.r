@@ -1,4 +1,6 @@
-##REMOTE SENSING!!!!!
+##REMOTE SENSING!!!!! 
+
+Hi jacob
 
 #download zip file Landsat Data
 #extract files and put them in Lab folder
@@ -32,6 +34,10 @@ plot(p224r63_2011$B2_sre, col=clg)
 
 clr <- colorRampPalette(c('dark red','red','pink'))(100) # 
 plot(p224r63_2011$B3_sre, col=clr)
+
+
+
+
 
 #################
 
