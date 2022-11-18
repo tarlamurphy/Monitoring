@@ -1,6 +1,7 @@
 ##REMOTE SENSING!!!!! 
 
 Hi jacob
+Hi Lola
 
 #download zip file Landsat Data
 #extract files and put them in Lab folder
@@ -113,3 +114,4 @@ plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="hist") # stretches the values so y
 
 #essential - time series. 
 #see the changes over time in the same place
+
