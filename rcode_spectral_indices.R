@@ -71,7 +71,69 @@ freq(d2c$map)
 f2006 <- 179281/(179281 + 163445)
 h2006 <- 163445/(179281 + 163445)
 
-##
+###############################################
+############################################
+
 #make a table - function is called data.frame
 
-percentages <- data.frame()
+#will be 3 columns - class:forest, human impacts, then proportions for 1992 and 2006
+landcover <- c("Forest", "Humans")  # array of two text elements
+percent_1992 <- c(89.86, 10.13)
+percent_2006 <- c(52.31, 47.68)
+
+percentages <- data.frame(landcover, percent_1992, percent_2006)
+percentages
+
+library(ggplot2) #to manage the aethetics of the plot
+
+p1 <- ggplot(percentages, aes(x=landcover, y=percent_1992, color=landcover)) +
+  geom_bar(stat="identity", fill="darkseagreen")
+
+p2 <- ggplot(percentages, aes(x=landcover, y=percent_2006, color=landcover)) + 
+  geom_bar(stat="identity", fill="darkseagreen")
+
+# first in ggplot, you put the name of the object to be plotted,
+# aes explains how you will build the histogram
+# we are using geom_bar to make bars for the histogram
+# we are using the identity, which corresponds to the numbers
+
+#now to put them all in the same graph
+# use a package called patchwork to make a multiframe
+
+library(patchwork)
+
+# go back and assign the plots to an object eg p1 and p2 
+# add them together
+
+p1 + p2
+
+# now put one plot on top of the other
+
+p1 / p2
+
+# ggplot examples
+plotRGB(l1992, r=1, g=2, b=3, stretch="lin")
+
+ggRGB(l1992, 1, 2, 3) # plot using gg instead
+
+library("viridis")
+
+dev.off()
+dvi1992 = l1992[[1]] - l1992[[2]] #get the dvi
+plot(dvi1992)
+
+ggplot() + geom_raster(dvi1992, mapping =aes(x=x, y=y, fill=layer)) + # we want to make a plot, using raster data, check inside the object dvi to find which
+  scale_fill_viridis(option="magma") + # using the viridis colour scheme and function
+  ggtitle("DVI 1992")
+
+ggplot() + geom_raster(dvi2006, mapping =aes(x=x, y=y, fill=layer)) + # we want to make a plot, using raster data, check inside the object dvi to find which
+  scale_fill_viridis(option="viridis") + # using the viridis colour scheme and function
+  ggtitle("DVI 2006")
+
+
+#exercise: with the patchwork package put 2 graphs one beside the other with 2 different viridis colour schems
+
+gp1 <- ggplot() + geom_raster(dvi1992, mapping =aes(x=x, y=y, fill=layer)) + # we want to make a plot, using raster data, check inside the object dvi to find which
+  scale_fill_viridis(option="magma") + # using the viridis colour scheme and function
+  ggtitle("DVI 1992")
+
