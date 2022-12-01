@@ -1,4 +1,5 @@
 
+################################
 # SPECTRAL INDICES
 
 library(raster)
@@ -71,7 +72,6 @@ freq(d2c$map)
 f2006 <- 179281/(179281 + 163445)
 h2006 <- 163445/(179281 + 163445)
 
-###############################################
 ############################################
 
 #make a table - function is called data.frame
@@ -136,4 +136,12 @@ ggplot() + geom_raster(dvi2006, mapping =aes(x=x, y=y, fill=layer)) + # we want 
 gp1 <- ggplot() + geom_raster(dvi1992, mapping =aes(x=x, y=y, fill=layer)) + # we want to make a plot, using raster data, check inside the object dvi to find which
   scale_fill_viridis(option="magma") + # using the viridis colour scheme and function
   ggtitle("DVI 1992")
+
+gp2 <- ggplot() + geom_raster(dvi2006, mapping =aes(x=x, y=y, fill=layer)) + # we want to make a plot, using raster data, check inside the object dvi to find which
+  scale_fill_viridis(option="viridis") + # using the viridis colour scheme and function
+  ggtitle("DVI 2006")
+
+gp1 + gp2
+
+
 
