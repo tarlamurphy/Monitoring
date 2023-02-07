@@ -1,6 +1,6 @@
 ## Ecosystems Monitoring Project
-## Time Series Analysis of Land Use Change and Deforestation in Europe (1999 - 2019)
-## January 2023
+## Time Series Analysis of NDVI Changes in Europe (1999 - 2019)
+## February 2023
 ## Tarla Murphy
 
 # set working directory eg. ("C:/Lab")
