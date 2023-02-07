@@ -1,7 +1,4 @@
-##REMOTE SENSING!!!!! 
-
-Hi jacob
-Hi Lola
+##REMOTE SENSING! 
 
 #download zip file Landsat Data
 #extract files and put them in Lab folder
